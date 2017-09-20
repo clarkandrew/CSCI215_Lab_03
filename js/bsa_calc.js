@@ -1,4 +1,4 @@
-alert('ads');
+
 
 function calculate() {
     
