@@ -1,4 +1,7 @@
+alert('ads');
+
 function calculate() {
+    
 
     var female = document.getElementsByName("sex")[1].checked;
     var male = document.getElementsByName("sex")[0].checked;
@@ -9,6 +12,23 @@ function calculate() {
     console.log( 'Male = ' + male );
     console.log( 'Weight = ' + weight );
     console.log( 'Height = ' + height );
+    
+    
+    
+    function inToCm(inches) {
+        var cm = inches * 2.54;
+        return cm;
+    }
+    
+    function poundsToKg(pounds) {
+        var kg = pounds * 0.45359237;
+        return kg;
+    }
+    
+    function inchesToMeters(inches) {
+        var meters = inches * 0.0254;
+        return meters;
+    }
 
     // -------------------------------
     // Conversions
@@ -25,7 +45,7 @@ function calculate() {
     // -------------------------------
 
     var BSA = 0;
-
+    BSA = Math.sqrt((inToCm(height) * poundsToKg(weight))/3600);
     // ==========================================
     // Todo: Perform BSA calculation here
 
@@ -36,12 +56,14 @@ function calculate() {
     var IBW = 0;
 
     if ( female ) {
-
+        IBW = 45.5+2.3*(height - 60);
         // ==========================================
         // Todo: Perform female IBW calculation here
 
 
     } else if ( male ) {
+        
+        IBW = 50+2.3*(height - 60);
 
         // ==========================================
         // Todo: Perform male IBW calculation here
@@ -53,6 +75,8 @@ function calculate() {
     // -------------------------------
 
     var BMI = 0;
+    
+    BMI = poundsToKg(weight)/Math.pow(inchesToMeters(height),2);
 
     // ==========================================
     // Todo: Perform BMI calculation here
